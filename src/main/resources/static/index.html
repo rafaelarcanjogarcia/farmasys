@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FarmaSys – Sistema de Vendas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>💊 FarmaSys</h1>
+    <nav>
+      <button class="tab active" data-tab="medicamentos">Medicamentos</button>
+      <button class="tab" data-tab="venda">Nova venda</button>
+      <button class="tab" data-tab="faturamento">Faturamento</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========== MEDICAMENTOS ========== -->
+    <section id="medicamentos" class="painel ativo">
+      <div class="card">
+        <h2 id="form-titulo">Cadastrar medicamento</h2>
+        <form id="form-med">
+          <input type="hidden" id="med-id">
+          <label>Nome <input id="med-nome" required></label>
+          <label>Fabricante <input id="med-fabricante"></label>
+          <label>Preço (R$) <input id="med-preco" type="number" step="0.01" min="0.01" required></label>
+          <label>Estoque <input id="med-estoque" type="number" min="0" required></label>
+          <label>Validade <input id="med-validade" type="date"></label>
+          <div class="acoes">
+            <button type="submit" class="btn primario">Salvar</button>
+            <button type="button" id="med-cancelar" class="btn" hidden>Cancelar edição</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="linha">
+          <h2>Estoque</h2>
+          <input id="busca" placeholder="Buscar por nome...">
+        </div>
+        <div class="tabela-wrap">
+          <table>
+            <thead><tr><th>Nome</th><th>Fabricante</th><th>Preço</th><th>Estoque</th><th>Validade</th><th></th></tr></thead>
+            <tbody id="tbody-med"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NOVA VENDA ========== -->
+    <section id="venda" class="painel">
+      <div class="card">
+        <h2>Adicionar item</h2>
+        <div class="linha">
+          <select id="venda-med"></select>
+          <input id="venda-qtd" type="number" min="1" value="1">
+          <button id="venda-add" class="btn primario">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Carrinho</h2>
+        <div class="tabela-wrap">
+          <table>
+            <thead><tr><th>Medicamento</th><th>Qtd</th><th>Unitário</th><th>Subtotal</th><th></th></tr></thead>
+            <tbody id="tbody-carrinho"></tbody>
+          </table>
+        </div>
+        <div class="linha total-linha">
+          <strong>Total: <span id="venda-total">R$ 0,00</span></strong>
+          <button id="venda-finalizar" class="btn primario">Finalizar venda</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FATURAMENTO ========== -->
+    <section id="faturamento" class="painel">
+      <div class="card">
+        <h2>Período</h2>
+        <div class="linha">
+          <label>De <input id="fat-inicio" type="date"></label>
+          <label>Até <input id="fat-fim" type="date"></label>
+          <button id="fat-buscar" class="btn primario">Consultar</button>
+        </div>
+      </div>
+
+      <div class="indicadores">
+        <div class="indicador"><span>Faturamento</span><strong id="fat-total">R$ 0,00</strong></div>
+        <div class="indicador"><span>Vendas</span><strong id="fat-qtd">0</strong></div>
+        <div class="indicador"><span>Ticket médio</span><strong id="fat-ticket">R$ 0,00</strong></div>
+      </div>
+
+      <div class="card">
+        <h2>Vendas do período</h2>
+        <div class="tabela-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Data</th><th>Itens</th><th>Total</th></tr></thead>
+            <tbody id="tbody-vendas"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
