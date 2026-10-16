@@ -120,4 +120,4 @@ POST /api/vendas
 ## 👨‍💻 Autor
 
 **Rafael Garcia**
-[LinkedIn](https://www.linkedin.com/in/rafael-arcanjo-01740735a/) · [GitHub](https://github.com/rafaelarcanjogarcia) · rafaelarcanjogarcia@gmail.com
+[LinkedIn](https://www.linkedin.com/in/SEU-PERFIL) · [GitHub](https://github.com/rafaelarcanjogarcia) · rafaelarcanjogarcia@gmail.com
